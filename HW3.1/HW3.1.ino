@@ -23,7 +23,8 @@ void loop() {
 
   lightAnalog = analogRead(analogPin);
   M5.Lcd.print("lightAnalog : ");
-  M5.Lcd.println(lightAnalog);
+  M5.Lcd.print(lightAnalog);
+  M5.Lcd.print("    ");
 
   M5.Lcd.setCursor(0,50);
 
@@ -31,5 +32,5 @@ void loop() {
   M5.Lcd.print("lightDigital : ");
   M5.Lcd.println(lightDigital);
 
-  delay(100);
+  delay(50);
 }

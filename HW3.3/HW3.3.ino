@@ -35,14 +35,15 @@ void loop() {
 
   lightAnalog = analogRead(analogPin);
   M5.Lcd.print("lightAnalog : ");
-  M5.Lcd.println(lightAnalog);
+  M5.Lcd.print(lightAnalog);
+  M5.Lcd.print("    ");
 
   numLight = map(lightAnalog,0,4095,64,0);
   setLED(0,numLight,RED_COLOR);
   setLED(numLight,64-numLight,BLACK_COLOR);
 
   FastLED.show();
-  delay(10);
+  delay(50);
 }
 
 void setLED(int start, int number, const int RGBcolor[]) {
