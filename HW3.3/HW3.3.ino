@@ -7,11 +7,15 @@
 #define NUM_LEDS 64
 #define BRIGHTNESS 5
 
-const int BLACK_COLOR[3] = {0,0,0};
-const int RED_COLOR[3] = {255,0,0};
-const int GREEN_COLOR[3] = {0,255,0};
-const int BLUE_COLOR[3] = {0,0,255};
-const int YELLOW_COLOR[3] = {255,255,0};
+int BLACK_COLOR[3] = {0,0,0};
+int COLOR[3];
+// const int RED_COLOR[3] = {255,0,0};
+// const int GREEN_COLOR[3] = {0,255,0};
+// const int BLUE_COLOR[3] = {0,0,255};
+// const int YELLOW_COLOR[3] = {255,255,0};
+int redValue; 
+int greenValue; 
+int blueValue; 
 
 const int analogPin = 34;
 
@@ -38,15 +42,19 @@ void loop() {
   M5.Lcd.print(lightAnalog);
   M5.Lcd.print("    ");
 
+  COLOR[0] = random(0,255);
+  COLOR[1] = random(0,255);
+  COLOR[2] = random(0,255);
+
   numLight = map(lightAnalog,0,4095,64,0);
-  setLED(0,numLight,RED_COLOR);
+  setLED(0,numLight,COLOR);
   setLED(numLight,64-numLight,BLACK_COLOR);
 
   FastLED.show();
-  delay(50);
+  delay(100);
 }
 
-void setLED(int start, int number, const int RGBcolor[]) {
+void setLED(int start, int number, int RGBcolor[]) {
   for (int i = start; i < start + number; i++)
   {
     leds[i] = CRGB(RGBcolor[0],RGBcolor[1],RGBcolor[2]);
